@@ -2,7 +2,7 @@ require 'csv'
 require 'pathname'
 
 module Diminutivity
-  VERSION = "0.0.13"
+  VERSION = "0.0.14"
   NAMEFILE = "lib/names1.1.csv"
   class Matcher
     attr_accessor :names,:namefile
