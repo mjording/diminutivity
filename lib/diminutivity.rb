@@ -20,7 +20,9 @@ module Diminutivity
     end
 
     def match(name,source_name)
-      names[name].include? source_name
+      diminutives = names[name]
+      return false unless diminutives
+      diminutives.include? source_name
     end
   end
 end
