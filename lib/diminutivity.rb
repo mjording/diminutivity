@@ -12,13 +12,17 @@ module Diminutivity
       self.namefile = namefile
       CSV.read(Pathname.new(__FILE__).parent.join("../#{namefile}")).each do |row|
         row.each do |name|
-          names[name] = row - [name]
+          names[name] ||= []
+          names[name] += row - [name]
         end
       end
+      names.keys.each { |name| names[name] = names[name].uniq }
     end
 
     def match(name,source_name)
-      names[name].include? source_name
+      diminutives = names[name]
+      return false unless diminutives
+      diminutives.include? source_name
     end
   end
 end
